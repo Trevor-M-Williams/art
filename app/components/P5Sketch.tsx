@@ -38,7 +38,7 @@ const P5Sketch: React.FC = () => {
             p.push();
             p.rotate(angle * i * 0.1);
 
-            let hue = (p.frameCount + i * 60) % 360;
+            const hue = (p.frameCount + i * 60) % 360;
             p.stroke(hue, 80, 100, 0.5);
             p.noFill();
 
