@@ -15,10 +15,10 @@ const P5Sketch: React.FC = () => {
 
       const sketch = (p: p5) => {
         let angle = 2;
-        let offset = 0.23;
-        let bgOpacity = 0.05;
-        let numLayers = 12;
-        let numSpirals = 5;
+        const offset = 0.23;
+        const bgOpacity = 0.05;
+        const numLayers = 12;
+        const numSpirals = 5;
 
         p.setup = () => {
           p.createCanvas(
@@ -45,12 +45,12 @@ const P5Sketch: React.FC = () => {
             p.beginShape();
             const baseRadius = Math.min(p.width, p.height) * 0.25 - 10;
             for (let a = 0; a < p.TWO_PI; a += 0.01) {
-              let r =
+              const r =
                 baseRadius +
                 10 +
                 baseRadius * p.sin(a * numSpirals + angle + i);
-              let x = r * p.cos(a - offset);
-              let y = r * p.sin(a - offset);
+              const x = r * p.cos(a - offset);
+              const y = r * p.sin(a - offset);
               p.vertex(x, y);
             }
             p.endShape(p.CLOSE);
