@@ -3,7 +3,11 @@
 import React, { useEffect, useRef } from "react";
 import p5 from "p5";
 
-const P5Sketch: React.FC = () => {
+interface SpiralsProps {
+  paused: boolean;
+}
+
+const Spirals: React.FC<SpiralsProps> = ({ paused }) => {
   const sketchRef = useRef<HTMLDivElement>(null);
   const sketchInstanceRef = useRef<p5 | null>(null);
 
@@ -14,11 +18,11 @@ const P5Sketch: React.FC = () => {
       }
 
       const sketch = (p: p5) => {
-        let angle = 2;
         const offset = 0.23;
         const bgOpacity = 0.05;
         const numLayers = 12;
         const numSpirals = 5;
+        let angle = 2;
 
         p.setup = () => {
           p.createCanvas(
@@ -30,6 +34,8 @@ const P5Sketch: React.FC = () => {
         };
 
         p.draw = () => {
+          if (paused) p.noLoop();
+
           p.background(0, bgOpacity);
 
           p.translate(p.width / 2, p.height / 2);
@@ -72,15 +78,9 @@ const P5Sketch: React.FC = () => {
 
       sketchInstanceRef.current = new p5(sketch, sketchRef.current);
     }
-
-    return () => {
-      if (sketchInstanceRef.current) {
-        sketchInstanceRef.current.remove();
-      }
-    };
-  }, []);
+  }, [paused]);
 
   return <div ref={sketchRef} className="size-full"></div>;
 };
 
-export default P5Sketch;
+export default Spirals;
