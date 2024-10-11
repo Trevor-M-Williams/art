@@ -18,7 +18,7 @@ const Spirals: React.FC<SpiralsProps> = ({ paused }) => {
       }
 
       const sketch = (p: p5) => {
-        let stars: Star[] = [];
+        const stars: Star[] = [];
         const numStars = 1000;
         const arms = 3;
         const spiralTightness = 0.3;
@@ -88,7 +88,7 @@ const Spirals: React.FC<SpiralsProps> = ({ paused }) => {
           p.background(0, 10);
           p.translate(p.width / 2, p.height / 2);
 
-          for (let star of stars) {
+          for (const star of stars) {
             star.update();
             star.display();
           }

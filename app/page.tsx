@@ -3,8 +3,10 @@
 import dynamic from "next/dynamic";
 import { useState } from "react";
 
-const Spirals = dynamic(() => import("./components/spirals"), { ssr: false });
-const Spirals2 = dynamic(() => import("./components/spirals2"), { ssr: false });
+const Spirals = dynamic(() => import("@/components/spirals"), { ssr: false });
+const Spirals2 = dynamic(() => import("@/components/spirals2"), {
+  ssr: false,
+});
 
 export default function Home() {
   const scenes = [
