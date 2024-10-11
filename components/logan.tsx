@@ -49,9 +49,13 @@ const Logan: React.FC<LoganProps> = ({ paused }) => {
 
             // Main shape with gradient
             p.beginShape();
+            const baseRadius = Math.min(p.width, p.height) / 2.5;
             for (let j = 0; j < 360; j += 5) {
               const r =
-                150 + 100 * p.sin(j * 8 + time * 2) * p.cos(j * 4 - time);
+                baseRadius +
+                (baseRadius / 4) *
+                  p.sin(j * 8 + time * 2) *
+                  p.cos(j * 4 - time);
               const x = r * p.cos(p.radians(j));
               const y = r * p.sin(p.radians(j));
               const inter = p.map(p.sin(j * 4 + time * 3), -1, 1, 0, 1);
