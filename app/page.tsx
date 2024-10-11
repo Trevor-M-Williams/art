@@ -7,11 +7,12 @@ const Spirals = dynamic(() => import("@/components/spirals"), { ssr: false });
 const Spirals2 = dynamic(() => import("@/components/spirals2"), {
   ssr: false,
 });
-
+const Logan = dynamic(() => import("@/components/logan"), { ssr: false });
 export default function Home() {
   const scenes = [
     { component: Spirals, name: "Flower Trance" },
     { component: Spirals2, name: "Galactic Tornado" },
+    { component: Logan, name: "Monday Afternoon Trip" },
   ];
 
   const [activeScene, setActiveScene] = useState<number | null>(null);
